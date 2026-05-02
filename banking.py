@@ -75,3 +75,21 @@ def list_accounts():
 
     for acc in accounts:
         print(acc)
+
+def transfer(from_id, to_id, amount):
+    conn = connect()
+    cursor = conn.cursor()
+
+    # check sender balance
+    cursor.execute("SELECT balance FROM accounts WHERE id = ?", (from_id,))
+    sender = cursor.fetchone()
+
+    if sender and sender[0] >= amount:
+        cursor.execute("UPDATE accounts SET balance = balance - ? WHERE id = ?", (amount, from_id))
+        cursor.execute("UPDATE accounts SET balance = balance + ? WHERE id = ?", (amount, to_id))
+        conn.commit()
+        print("Transfer successful")
+    else:
+        print("Insufficient funds or invalid account")
+
+    conn.close()
