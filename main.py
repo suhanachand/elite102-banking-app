@@ -7,7 +7,11 @@ print("=== Welcome to Banking System ===")
 
 while True:
     print("\n1. Create Account")
-    print("5. Exit")
+    print("2. Deposit")
+    print("3. Withdraw")
+    print("4. Check Balance")
+    print("5. List Accounts")
+    print("6. Exit")
 
     choice = input("Enter choice: ")
 
@@ -32,3 +36,10 @@ while True:
 
     elif choice == "5":
         banking.list_accounts()
+
+    elif choice == "6":
+        print("Goodbye!")
+        break
+
+    else:
+        print("Invalid choice. Try again.")

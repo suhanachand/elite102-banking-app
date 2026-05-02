@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Banking System</title>
+</head>
+<body>
+
+<h1>Banking System</h1>
+
+<h2>Create Account</h2>
+<form method="POST" action="/create">
+    <input name="name" placeholder="Name">
+    <input name="deposit" placeholder="Initial Deposit">
+    <button type="submit">Create</button>
+</form>
+
+<h2>Deposit</h2>
+<form method="POST" action="/deposit">
+    <input name="id" placeholder="Account ID">
+    <input name="amount" placeholder="Amount">
+    <button type="submit">Deposit</button>
+</form>
+
+<h2>Withdraw</h2>
+<form method="POST" action="/withdraw">
+    <input name="id" placeholder="Account ID">
+    <input name="amount" placeholder="Amount">
+    <button type="submit">Withdraw</button>
+</form>
+
+<h2>Check Balance</h2>
+<form method="POST" action="/balance">
+    <input name="id" placeholder="Account ID">
+    <button type="submit">Check</button>
+</form>
+
+</body>
+</html>
