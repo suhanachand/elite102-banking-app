@@ -63,3 +63,15 @@ def check_balance(account_id):
         print("Balance:", result[0])
     else:
         print("Account not found")
+
+def list_accounts():
+    conn = connect()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM accounts")
+    accounts = cursor.fetchall()
+
+    conn.close()
+
+    for acc in accounts:
+        print(acc)
