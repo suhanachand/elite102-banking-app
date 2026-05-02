@@ -48,3 +48,18 @@ def withdraw(account_id, amount):
 
     conn.commit()
     conn.close()
+
+
+def check_balance(account_id):
+    conn = connect()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT balance FROM accounts WHERE id = ?", (account_id,))
+    result = cursor.fetchone()
+
+    conn.close()
+
+    if result:
+        print("Balance:", result[0])
+    else:
+        print("Account not found")
