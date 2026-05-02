@@ -20,9 +20,10 @@ def home():
 def create():
     name = request.form["name"]
     deposit = float(request.form["deposit"])
-    banking.create_account(name, deposit)
 
-    return home_message("Account created successfully!")
+    acc_id = banking.create_account(name, deposit)
+
+    return home_message(f"Account created! Your account ID is {acc_id}")
 
 
 @app.route("/deposit", methods=["POST"])
@@ -46,19 +47,15 @@ def withdraw():
 @app.route("/balance", methods=["POST"])
 def balance():
     acc_id = int(request.form["id"])
-    balance = banking.check_balance(acc_id)
+    bal = banking.check_balance(acc_id)
 
-    return home_message(f"Balance checked!")
+    if bal is None:
+        msg = "Account not found"
+    else:
+        msg = f"Current balance: {bal}"
 
-@app.route("/transfer", methods=["POST"])
-def transfer():
-    from_id = int(request.form["from_id"])
-    to_id = int(request.form["to_id"])
-    amount = float(request.form["amount"])
+    return home_message(msg)
 
-    banking.transfer(from_id, to_id, amount)
-
-    return home_message("Transfer completed!")
 
 def home_message(msg):
     conn = connect()
