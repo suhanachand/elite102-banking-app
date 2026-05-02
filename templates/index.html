@@ -45,6 +45,11 @@
         <form method="POST" action="/balance">
             <input name="id" placeholder="Account ID" required>
             <button type="submit">Check</button>
+            {% if message %}
+            <div class="message">
+                {{ message }}
+            </div>
+            {% endif %}
         </form>
     </div>
 
