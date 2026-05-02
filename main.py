@@ -2,7 +2,7 @@ from database import create_tables
 import banking
 
 create_tables()
-
+print("Loading Banking System...")
 print("=== Welcome to Banking System ===")
 
 while True:
