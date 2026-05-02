@@ -2,46 +2,62 @@
 <html>
 <head>
     <title>Banking System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
 
-<h1>Banking System</h1>
+<div class="header">
+    <h1>Banking Dashboard</h1>
+</div>
 
-<h2>Create Account</h2>
-<form method="POST" action="/create">
-    <input name="name" placeholder="Name">
-    <input name="deposit" placeholder="Initial Deposit">
-    <button type="submit">Create</button>
-</form>
+<div class="container">
 
-<h2>Deposit</h2>
-<form method="POST" action="/deposit">
-    <input name="id" placeholder="Account ID">
-    <input name="amount" placeholder="Amount">
-    <button type="submit">Deposit</button>
-</form>
+    <div class="card">
+        <h2>Create Account</h2>
+        <form method="POST" action="/create">
+            <input name="name" placeholder="Name" required>
+            <input name="deposit" placeholder="Initial Deposit" required>
+            <button type="submit">Create</button>
+        </form>
+    </div>
 
-<h2>Withdraw</h2>
-<form method="POST" action="/withdraw">
-    <input name="id" placeholder="Account ID">
-    <input name="amount" placeholder="Amount">
-    <button type="submit">Withdraw</button>
-</form>
+    <div class="card">
+        <h2>Deposit</h2>
+        <form method="POST" action="/deposit">
+            <input name="id" placeholder="Account ID" required>
+            <input name="amount" placeholder="Amount" required>
+            <button type="submit">Deposit</button>
+        </form>
+    </div>
 
-<h2>Check Balance</h2>
-<form method="POST" action="/balance">
-    <input name="id" placeholder="Account ID">
-    <button type="submit">Check</button>
-</form>
+    <div class="card">
+        <h2>Withdraw</h2>
+        <form method="POST" action="/withdraw">
+            <input name="id" placeholder="Account ID" required>
+            <input name="amount" placeholder="Amount" required>
+            <button type="submit">Withdraw</button>
+        </form>
+    </div>
 
-<div class="card">
-    <h2>Transfer Money</h2>
-    <form method="POST" action="/transfer">
-        <input name="from_id" placeholder="From Account ID">
-        <input name="to_id" placeholder="To Account ID">
-        <input name="amount" placeholder="Amount">
-        <button type="submit">Transfer</button>
-    </form>
+    <div class="card">
+        <h2>Check Balance</h2>
+        <form method="POST" action="/balance">
+            <input name="id" placeholder="Account ID" required>
+            <button type="submit">Check</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h2>Transfer Money</h2>
+        <form method="POST" action="/transfer">
+            <input name="from_id" placeholder="From Account ID" required>
+            <input name="to_id" placeholder="To Account ID" required>
+            <input name="amount" placeholder="Amount" required>
+            <button type="submit">Transfer</button>
+        </form>
+    </div>
+
 </div>
 
 </body>
