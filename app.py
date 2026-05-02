@@ -36,5 +36,14 @@ def balance():
     banking.check_balance(acc_id)
     return redirect("/")
 
+@app.route("/transfer", methods=["POST"])
+def transfer_route():
+    from_id = int(request.form["from_id"])
+    to_id = int(request.form["to_id"])
+    amount = float(request.form["amount"])
+
+    banking.transfer(from_id, to_id, amount)
+    return redirect("/")
+
 if __name__ == "__main__":
     app.run(debug=True)
